@@ -237,10 +237,31 @@ The development of higher topos theory (and more generally, higher
 category theory) leads to wonder if a notion of sheafification still
 exists in this setting. This question is answered positively
 in~\cite{lurie}, where the author builds a sheafification functor, but
-only for Grothendieck sheaves. Surprisingly, sheafification in a higher
-topos is just an iteration of the process of sheafification in topos
-theory. It seems that Lawvere-Tierney sheaves were not considered in
-this new setting.
+only for Grothendieck sheaves. Surprisingly, sheafification in a
+higher topos is just an iteration of the process of sheafification in
+topos theory. 
+
+Section~\ref{sec:sheaf_hott} presents a definition of the
+sheafification functor in the setting of homotopy type theory. As
+Lawvere-Tierney sheaves were, to our knowledge, not considered in the
+higher setting, the contribution of this article is twofold: (i) we
+provide the first notion of Lawvere-Tierney sheafification in Homotopy
+Type Theory by connecting it to the work on higher
+modalities~\cite{hottbook}, (ii) we formalize all the definitions and
+theorems internally inside the Coq proof assistant.
+
+\subsection*{Plan of the paper}
+
+Section~\ref{sec:hott} introduces the necessary preliminaries on
+Homotopy Type Theory while Section~\ref{sec:modalities} presents the
+version of higher modalities that we
+use. Section~\ref{sec:sheaf_topos} recalls the definition of
+sheafification in toposes. Section \ref{sec:sheaf_hott} presents the
+main contribution of this article, the definition of sheafification in
+Homotopy Type Theory, and Section \ref{sec:sheaf-formalization}
+discusses its formalization inside the Coq proof assistant. 
+
+\subsection*{Related Work}
 
 Similar questions have been considered around the Curry-Howard
 isomorphism, to extend a programming language close to type theory
@@ -258,7 +279,7 @@ classical principles.
 Other works have tried to extend continuation-passing-style (CPS)
 transformation to type theory, but they have been faced with the
 difficulty that the CPS transformation is incompatible with (full) dependent
-sums~\cite{barthe2002cps}, which puts emphasis on the tedious link
+sums~\cite{barthe2002cps}, which puts emphasis on the fragile link
 between the axiom of choice and the law of excluded middle in type theory.
 %
 Nevertheless the axiom of choice has been shown to be realizable by
@@ -271,14 +292,14 @@ evaluation~\cite{herbelin2012constructive}.
 The work on forcing in type theory~\cite{jaber2012extending,forcing2016} also
 gives a computational meaning to a type theory enriched with new
 logical or computational principle.
-
-Section~\ref{sec:sheaf_hott} presents a definition of the
-sheafification functor in the setting of homotopy type
-theory. Actually, this construction is entirely complementary to
+%
+Actually, this construction is entirely complementary to
 forcing in type theory, as forcing corresponds to the presheaf
 construction while Lawvere-Tierney sheafification corresponds to the
 topological transformation that allows to go from the presheaf
 construction to the sheaf construction.
+
+
 
 
 \section{Preliminaries on Homotopy Type Theory}
