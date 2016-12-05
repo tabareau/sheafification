@@ -1,0 +1,20 @@
+Changes:
+
+- All the proofs that are not in the HoTT book are now detailled in the paper
+  and the other are referenced as precise lemmas of the HoTT book.
+- The related work as been moved and pint explicitely as such
+- The contribution of the article with respect to the fact that Lawvere-Tierney sheafification
+   does not exist in higher toposes is now made clearer
+- The introduction takes more time to explain the link between HoTT
+  and higher toposes.
+- About the connection between Grothentieck and Lawvere-Tierney
+  sheafification in the higher topos setting: we now talk about
+  synthetic sheafification for Lawvere-Tierney (instead of
+  generalized) and metion the potential connection as a future work
+  that is beyond the scope of this paper.- We have added a plan of paper
+- Minor corrections have been applied
+- A global pass on the English has been done
+- The need to use the work of [Bou16] is now explicit in Section 2.3
+- Section 3.4 is now explicit about the use of type-in-type.
+- Non-scientific expressions (such as "tedious" or "popping out") have
+  been removed. 
