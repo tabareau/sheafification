@@ -194,6 +194,11 @@ command.  The permission to copy statement is produced by the
 
 \section{Introduction}
 
+
+Sheafification~\cite{maclanemoerdijk} is a very powerful geometric
+construction that has been initially stated in topology and has
+quickly been lifted to mathematical logic.
+%
 In topos theory, sheafification can be seen as a way to transform a
 topos into another one. It is used, for example, to build, from any
 topos $\mathcal T$, a boolean topos (\ie{} satisfying the excluded
@@ -233,22 +238,83 @@ construction of the geometric embedding is done in \cite[Section
 V.3]{maclanemoerdijk}, and briefly recalled in
 section~\ref{sec:sheaf_topos}.
 
-The development of higher topos theory (and more generally, higher
-category theory) leads to wonder if a notion of sheafification still
-exists in this setting. This question is answered positively
-in~\cite{lurie}, where the author builds a sheafification functor, but
-only for Grothendieck sheaves. Surprisingly, sheafification in a
-higher topos is just an iteration of the process of sheafification in
-topos theory. 
+Type theory is known to be quite closed to topos theory so one could
+wonder why similar techniques have not been developed in the field of
+type theory.
+%
+The answer to this question has been given recently by the advent of
+homotopy type theory~\cite{hottbook}, which is an extension of
+Martin-Löf type theory with principles inspired by (higher) category
+theory and homotopy theory, such as higher inductive
+types~\cite{lumsdaine2011higher,lumsdaine2013higher} and
+Voevodsky's univalence principle~\cite{kapulkin2012simplicial}, which
+says that for any types $T$ and $U$, the canonical map 
+$$
+(T = U) \to (T \simeq U)
+$$ 
+%
+which transports equalities to equivalences is an equivalence.
+%
+This new point of view on type theory has revealed the homotopy
+structure of types where for instance mere propositions (or
+$\Type_{-1}$) are just types with an
+irrelevant equality and sets (or $\Type_{0}$) are types
+with a propositional equality and so on for $\Type_{n}$.
+%
+The development of univalence has also shed some light on the
+difficulty to make AC and EM coexist in type theory. Indeed, it
+has been shown that a naive (non-propositional) version of EM is
+inconsistent with univalence.
 
-Section~\ref{sec:sheaf_hott} presents a definition of the
+When restricted to mere propositions and sets, homotopy type
+theory corresponds quite closely to topos theory but the mismatch
+starts when considering higher homotopy types.
+%
+Fortunately, a higher version of topos theory has been developed
+recently by mathematicians, synthesized in the monograph of Lurie on
+higher topos theory~\cite{lurie}. Even if the connection between the
+homotopy type theory and higher topos theory has not been made precise
+yet, it is commonly believed that the former constitutes an internal
+language for the latter. 
+
+Lurie has presented all the tools that have been defined in
+topos theory, but in a higher setting. In particular, the theory of
+sheaves has been lifted to higher topos theory.
+%
+As the notion of higher toposes appears to correspond very closely to
+homotopy type theory, this provides a new hope that tackling the
+problem of extending the power of homotopy type theory using
+sheafification is actually possible.
+
+Nevertheless, the adaptation of the sheafification in higher topos
+theory to homotopy type theory is not straightforward because the
+construction in higher toposes is restricted to the initial Grothendieck
+setting which is still very topologically oriented, and not very
+amenable to formalization in type theory. It seems more promising to
+use a synthetic notion of sheafification, called Lawvere-Tierney
+sheafification~\cite{tierney1972sheaf,maclanemoerdijk}, but this construction has not
+been considered yet in the setting of higher topos theory. This rises
+two issues that this paper addresses: (i) how to lift the notion of
+Lawvere-Tierney sheafification to higher topos theory and (ii) is it
+possible to formalize this new definition in homotopy type theory.
+
+
+% The development of higher topos theory (and more generally, higher
+% category theory) leads to wonder if a notion of sheafification still
+% exists in this setting. This question is answered positively
+% in~\cite{lurie}, where the author builds a sheafification functor, but
+% only for Grothendieck sheaves. Surprisingly, sheafification in a
+% higher topos is just an iteration of the process of sheafification in
+% topos theory. 
+
+This paper presents a definition of the
 sheafification functor in the setting of homotopy type theory. As
 Lawvere-Tierney sheaves were, to our knowledge, not considered in the
 higher setting, the contribution of this article is twofold: (i) we
 provide the first notion of Lawvere-Tierney sheafification in Homotopy
 Type Theory by connecting it to the work on higher
 modalities~\cite{hottbook}, (ii) we formalize all the definitions and
-theorems internally inside the Coq proof assistant.
+theorems internally inside the Coq proof assistant~\cite{Coq:manual}.
 
 \subsection*{Plan of the paper}
 
@@ -632,6 +698,9 @@ nerve.
 In~\cite{boulier}, the authors propose an analogue of this property:
 they give, for any map $f$, a diagram $C(f)$ whose colimit is $\im(f)$.
 
+This property will be essential in the proof that the construction
+$\separated$, defined in Section~\ref{sssec:type_to_sep}, gives rise to a modality.
+
 \begin{defi}
   Let $f:X \to Y$ be a map. The coequalizer $T_f$ of the kernel pair of $f$ is the higher inductive type given
   by
@@ -891,9 +960,9 @@ that
     The facts that $A\simeq B$ and $\IsEquiv f$ for any modal types
     $A,B$ and map $f:A\to B$ are modal are technical, but don't
     involve new methods. They can be found
-    in the formalisation.
+    in the formalization.
   \item 
-    It is straighforward to define a map
+    It is straightforward to define a map
     \[ \phi:\sumD x X  {f x = y}\to
     \sumD x {\modal X} {\modal f x = \eta_Y y},\]
     using $\eta$ functions.
@@ -912,7 +981,7 @@ that
     \[
     \fonction{s}{\fib{\eta_X}x}{\fib{\eta_Y}{\modal f\, x}}{(a,q)}{(f\, a,-)}
     \]
-    But left-exctness allows to characterize the contractibility of fibers:
+    But left-exactness allows to characterize the contractibility of fibers:
     \begin{lem}
       Let $A,B:\Type$. Let $f:A\to B$. If $\modal A$ and $\modal B$ are
       contractible, then so is $\modal(\fib f b)$ for any $b:B$.
@@ -943,7 +1012,7 @@ an equivalent characterization of left-exactness.
   % \end{itemize}
 \end{prop}
 \begin{proof}
-  We will rather prove something slighlty more general, using an
+  We will rather prove something slightly more general, using an
   encode-decode proof~\cite[Section 8.9]{hottbook}; we will
   characterize, for a type $A$ and a fixed inhabitant $x:A$ the type 
   \[ \eta_A x = y \] 
@@ -1067,7 +1136,7 @@ modalities, as described in~\cite[Section 7.3]{hottbook}.
   \item Let $A:\Type$ and $B:A\to\Type$ such that $P(A)$ and $\prodD a
     A {P(B\, a)}$. There is a map
     \[\sumD x A {B\, x} \to A \]
-    thus by the preivous point, we can extend it into 
+    thus by the previous point, we can extend it into 
     \[\kappa:\lnot\lnot\sumD x A {B\, x} \to A.\]
     It remains to check that for any $x:\lnot\lnot\sumD x A {B\, x}$,
     $B(\kappa\, x)$.
@@ -1181,14 +1250,14 @@ modalities. General modalities are formalized in the Coq/HoTT
 library~\cite{hottlib}, thanks to a huge work of Mike
 Shulman~\cite{modules-modalities}. The formalization might seem to be
 straightforward, but the universe levels (at least, their automatic
-handling by Coq) are here a great issue. Hence, we have to explicitely
+handling by Coq) are here a great issue. Hence, we have to explicitly
 give the universe levels and their constraints in a large part of the
 library. For example, the reflector $\modal$ of a modality is defined,
 in~\cite{hottlib} as
 \[ \modal : \Type^i \to \Type^i ;\]
 it maps any universe to itself.
 
-In section~\ref{sec:sheaf_hott}, we will need a slighlty more general
+In section~\ref{sec:sheaf_hott}, we will need a slightly more general
 definition of modality. The actual definitions stay the same, but the
 universes constraints we consider change. The reflector $\modal$ will
 now have type
@@ -1222,7 +1291,7 @@ smallest universe. We could then get rid of the universes generated by
 $\IsType n$, and treat the truncated modality exactly as generalized
 modalities.
 
-In our formalisation, we decided to work with the \code{type-in-type}
+In our formalization, we decided to work with the \code{type-in-type}
 Coq option, to avoid any issue with universes.
 
 
@@ -1230,7 +1299,7 @@ Coq option, to avoid any issue with universes.
 \label{sec:sheaf_topos}
 
 In this section, we will rather work in an arbitrary topos rather than in type theory. The next section will present a
-generalisation of the results presented here.
+generalization of the results presented here.
 
 Let us fix for the whole section a topos $\mathcal E$, with subobject
 classifier $\Omega$. A {\em Lawvere-Tierney topology} on $\mathcal E$
@@ -1244,7 +1313,7 @@ speak about {\em locally true} things instead of {\em true} things.
 \end{defi}
 
 A classical example of Lawvere-Tierney topology is given by double
-negation. Other examples are given by Grothedieck topologies, in the
+negation. Other examples are given by Grothendieck topologies, in the
 sense
 \begin{thm}[\thethm\ ({\cite[Theorem V.1.2]{maclanemoerdijk}})]
   Every Grothendieck topology $J$ on a small category $\mathbf C$ determines a
@@ -1511,7 +1580,7 @@ but the following proposition gives a better understanding of the situation.
   g\, x$, as required. 
 \end{proof}
 
-A $(n+1)$-sheaf is hence just a type satisying the usual property of sheaves
+A $(n+1)$-sheaf is hence just a type satisfying the usual property of sheaves
 (\ie{} existence of uniqueness of arrow extension from dense
 $(-1)$-subobjects), with the condition that all its path types are
 $n$-sheaves. It is a way to force the compatibility of the modalities we
@@ -1587,7 +1656,7 @@ functions is a sheaf as soon as its codomain is a sheaf.
 \begin{proof}
   Again, when proving equivalences, we will only define the maps. The
   proofs of section and retraction are technical, not really
-  interesting, and present in the formalisation.
+  interesting, and present in the formalization.
   \begin{itemize}
   \item {\em Separation:} Let $E:\Type$ and $\chi:E \to \Type_n$ dense
     in $E$. Let $\phi_1,\phi_2:E\to \prodD a A {B\, a}$ equal on
@@ -1766,7 +1835,7 @@ of $f$
     && S &&
   }
 \]
-if $f$ satisties~(\ref{eq:Omono}), then each $|f_i|_{n+1}$ does.
+if $f$ satisfies~(\ref{eq:Omono}), then each $|f_i|_{n+1}$ does.
 
 \begin{rmq}
 It is clear that if $A$ and $B$ are equivalent types, and for all $a,b:A,~f (a) = f (b) \simeq \modal
@@ -2168,7 +2237,7 @@ restricted to $i$-truncated types, it is:
   For $i$-truncated types, $\modal = \modal_i$, and $\modal_i$ is left-exact.
 \end{proof}
 
-The compatibilities between the modalities $\modal_n$ and between the
+The compatibility between the modalities $\modal_n$ and between the
 modalities $\|\cdot \|_n$ allow us to chose the truncation index as
 high as desired.
 Taking it as a non-fixed parameter allows to work in an
