@@ -9,7 +9,7 @@
 \usepackage{lmodern}
 \usepackage{xspace}
 \usepackage{url}
-% \usepackage[colorlinks=true]{hyperref}
+\usepackage[colorlinks=false]{hyperref}
 
 % \usepackage[moderate]{savetrees}
 % \usepackage{mathptmx}
@@ -246,7 +246,7 @@ The answer to this question has been given recently by the advent of
 homotopy type theory~\cite{hottbook}, which is an extension of
 Martin-Löf type theory with principles inspired by (higher) category
 theory and homotopy theory, such as higher inductive
-types~\cite{lumsdaine2011higher,lumsdaine2013higher} and
+types~\cite{lumsdaine2013higher,hottbook} and
 Voevodsky's univalence principle~\cite{kapulkin2012simplicial}, which
 says that for any types $T$ and $U$, the canonical map 
 $$
@@ -275,7 +275,8 @@ recently by mathematicians, synthesized in the monograph of Lurie on
 higher topos theory~\cite{lurie}. Even if the connection between the
 homotopy type theory and higher topos theory has not been made precise
 yet, it is commonly believed that the former constitutes an internal
-language for the latter. 
+language for the latter (see \cite{shulman2015} for a more detail
+discussion on this topic). 
 
 Lurie has presented all the tools that have been defined in
 topos theory, but in a higher setting. In particular, the theory of
@@ -307,14 +308,14 @@ possible to formalize this new definition in homotopy type theory.
 % higher topos is just an iteration of the process of sheafification in
 % topos theory. 
 
-This paper presents a definition of the
-sheafification functor in the setting of homotopy type theory. As
-Lawvere-Tierney sheaves were, to our knowledge, not considered in the
-higher setting, the contribution of this article is twofold: (i) we
-provide the first notion of Lawvere-Tierney sheafification in Homotopy
-Type Theory by connecting it to the work on higher
-modalities~\cite{hottbook}, (ii) we formalize all the definitions and
-theorems internally inside the Coq proof assistant~\cite{Coq:manual}.
+This paper presents a definition of the sheafification functor in the
+setting of homotopy type theory. As Lawvere-Tierney sheaves were, to
+our knowledge, not considered in the higher setting, the contribution
+of this article is twofold: (i) we propose a construction which
+coincides with Lawvere-Tierney sheafification when restricted to hSets
+by connecting it to the work on higher modalities~\cite{hottbook},
+(ii) we formalize all the definitions and theorems internally inside
+the Coq proof assistant~\cite{Coq:manual}.
 
 \subsection*{Plan of the paper}
 
@@ -794,6 +795,15 @@ Let's recall the main theorem:
 
 \section{Modalities}
 \label{sec:modalities}
+
+This section presents modalities in Homotopy Type Theory as defined in
+\cite{hottbook} and later developed in
+\cite{EPTCS158.8,shulman2015Brouwer}. We have added proofs of various
+properties of modalities when they are not already present in the
+literature.
+ %
+A truncated version of modalities, specific to our work, is then
+presented together with a discussion on the formalization.  
 
 \begin{defi}
   \label{def:modality}
