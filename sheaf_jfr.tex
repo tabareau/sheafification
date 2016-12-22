@@ -148,18 +148,18 @@
 
 \begin{abstract}
   Sheafification is a popular tool in topos theory which
-  allows to extend the internal logic of a topos with new
-  principles. One of its most famous applications is the possibility
-  to transform a topos into a boolean topos using the
-  dense topology, which corresponds in essence to Gödel's double
+  allows the extension of the internal logic of a topos with new
+  principles. One of its most famous applications is the transformation
+  of a given topos into a boolean topos using the
+  dense topology, a construction which corresponds in essence to Gödel's double
   negation translation.
   % 
-  The same construction has not been developed in Martin-Löf type
-  theory because of a mismatch between topos theory and type theory. This
-  mismatch has been fixed recently by considering homotopy type
+  The same construction has not yet been developed in Martin-Löf type
+  theory due to a mismatch between topos theory and type theory. This
+  mismatch has been fixed recently by the introduction of homotopy type
   theory, an extension of Martin-Löf type theory with new
   principles inspired by category theory and homotopy theory, and
-  which corresponds closely to higher toposes.
+  corresponding closely with the theory of higher toposes.
   % 
   In this paper, we give a computer-checked construction of
   Lawvere-Tierney sheafification in homotopy type theory.
@@ -196,54 +196,52 @@ command.  The permission to copy statement is produced by the
 
 
 Sheafification~\cite{maclanemoerdijk} is a very powerful geometric
-construction that has been initially stated in topology and has
-quickly been lifted to mathematical logic.
+construction which arose initially in topology and algebraic geometry but which,
+nonetheless, quickly found important applications to mathematical logic.
 %
-In topos theory, sheafification can be seen as a way to transform a
-topos into another one. It is used, for example, to build, from any
-topos $\mathcal T$, a boolean topos (\ie{} satisfying the excluded
-middle property) satisfying the axiom of choice and negating the
-continuum hypothesis~\cite[Theorem VI.2.1]{maclanemoerdijk}.
-This is actually an adaptation of a slightly older method, in set
-theory, to change a model $\mathfrak M$ of ZFC into a model $\mathfrak
-M[G]$ of ZFC, satisfying other principles, called {\em forcing}. Its
-most famous application is the proof of consistency of ZFC with the
-negation of the continuum hypothesis, by Paul Cohen~\cite{cohen1966},
-answering (neither negatively nor positively) the first Hilbert's
+In topos theory, sheafification can be seen as a way to transform one
+topos into another. It is used, for example, to build, from any topos
+$\mathcal T$, a boolean topos (\ie{} one which validates the excluded
+middle principle) satisfying the axiom of choice and negating the
+continuum hypothesis~\cite[Theorem VI.2.1]{maclanemoerdijk}.  This is,
+in fact, an adaptation of a slightly older set theoretic method called
+{\em forcing} which transforms a model $\mathfrak M$ of ZFC into a
+model $\mathfrak M[G]$ of ZFC, satisfying new principles. Its most
+famous application is the proof of consistency of ZFC with the
+negation of the continuum hypothesis by Paul Cohen~\cite{cohen1966},
+answering (neither negatively nor positively) Hilbert's first
 problem. Indeed, Gödel proved in 1938 the consistency of ZFC with
 continuum hypothesis~\cite{godel1938} using the constructible model
-$\mathfrak L$.
-The global idea of this technique is to add to the theory
-ZFC partial information about the witness of $\lnot$CH. 
-Then, supposing that ZFC is coherent, it is provable that ZFC together
-with a finite number of approximation of the desired object is still
-consistent. Then, the compactness theorem allows to prove the
+$\mathfrak L$.  The central idea of forcing is to add to the
+theory ZFC partial information about the witness of $\lnot$CH.  Then,
+supposing that ZFC is coherent, it is provable that ZFC together with
+a finite number of approximation of the desired object is still
+consistent. Finally, the compactness theorem allows one to prove the
 consistency of ZFC with {\em all} approximations, \ie{} with a witness
 of $\lnot$CH.
 
-Then, forcing has been adapted to the setting of topos theory by Myles
-Tierney~\cite{tierney1972}, through the notion of sheaves.  Note that,
-in topos theory, there are two different kind of sheaves: Grothendieck
-sheaves, which only exist on a presheaf topos, and Lawvere-Tierney
-sheaves. One can show that Lawvere-Tierney sheaves, when considered on
-a presheaf topos, are exactly the Grothendieck sheaves; thus,
-Lawvere-Tierney sheaves can be seen as a generalization of
-Grothendieck sheaves.  Given a topos $\mathcal T$, one can build
+Subsequently, forcing was adapted to topos theory by Myles
+Tierney~\cite{tierney1972} making use of the notion of sheaves.
+Note that, in topos theory, there are two different kind of sheaves:
+Grothendieck sheaves, which only exist on a presheaf topos, and
+Lawvere-Tierney sheaves. One can show that Lawvere-Tierney sheaves,
+when considered on a presheaf topos, are exactly the Grothendieck
+sheaves; thus, Lawvere-Tierney sheaves can be seen as a generalization
+of Grothendieck sheaves.  Given a topos $\mathcal T$, one can build
 another topos -- the topos of sheaves $\Sh{}(\mathcal T)$ -- together
 with a geometric embedding from $\Sh{}(\mathcal T)$ to $\mathcal T$
-whose left adjoint is
-called {\em sheafification}.  Depending on the sheaves we chose to treat,
-the topos $\Sh{}(\mathcal T)$ satisfies new principles. The
-construction of the geometric embedding is done in \cite[Section
-V.3]{maclanemoerdijk}, and briefly recalled in
+whose left adjoint is called {\em sheafification}.  Depending on the
+sheaves we choose to treat, the topos $\Sh{}(\mathcal T)$ may satisfy new
+principles. The construction of the geometric embedding is done in
+\cite[Section V.3]{maclanemoerdijk}, and briefly recalled in
 section~\ref{sec:sheaf_topos}.
 
-Type theory is known to be quite close to topos theory so one could
-wonder why similar techniques have not been developed in the field of
+Type theory is known to have a close relationship with topos theory,
+prompting one to wonder if similar techniques might not be developed for
 type theory.
 %
 The answer to this question has been given recently by the advent of
-homotopy type theory~\cite{hottbook}, which is an extension of
+homotopy type theory~\cite{hottbook}, an extension of
 Martin-Löf type theory with principles inspired by (higher) category
 theory and homotopy theory, such as higher inductive
 types~\cite{lumsdaine2013higher,hottbook} and
@@ -253,16 +251,16 @@ $$
 (T = U) \to (T \simeq U)
 $$ 
 %
-which transports equalities to equivalences is an equivalence.
+transporting equalities to equivalences, is itself an equivalence.
 %
-This new point of view on type theory has revealed the homotopy
-structure of types where for instance mere propositions (or
+This new point of view on type theory has revealed how types
+carry homotopical structure. For instance, mere propositions (or
 $\Type_{-1}$) are just types with an
 irrelevant equality and sets (or $\Type_{0}$) are types
 with a propositional equality and so on for $\Type_{n}$.
 %
 The development of univalence has also shed some light on the
-difficulty to make AC and EM coexist in type theory. Indeed, it
+difficulty of making AC and EM coexist in type theory. Indeed, it
 has been shown that a naive (non-propositional) version of EM is
 inconsistent with univalence.
 
@@ -273,30 +271,30 @@ starts when considering higher homotopy types.
 Fortunately, a higher version of topos theory has been developed
 recently, synthesized in the monograph of Lurie on
 higher topos theory~\cite{lurie}. Even if the connection between 
-homotopy type theory and higher topos theory has not been made precise
-yet, it is commonly believed that the former constitutes an internal
+homotopy type theory and higher topos theory has not yet been made
+perfectly precise, it is commonly believed that the former constitutes an internal
 language for the latter (see \cite{shulman2015} for a more detail
 discussion on this topic). 
 
-Lurie has presented all the tools that have been defined in
-topos theory, but in a higher setting. In particular, the theory of
-sheaves has been lifted to higher topos theory.
+Lurie has adapted a considerable number of the tools of topos theory
+to a higher setting. In particular, the theory of sheaves has been
+lifted to higher topos theory.
 %
-As the notion of higher toposes appears to correspond very closely to
+As the notion of higher topos appears to correspond very closely to
 homotopy type theory, this provides a new hope that tackling the
 problem of extending the power of homotopy type theory using
 sheafification is actually possible.
 
 Nevertheless, the adaptation of the sheafification in higher topos
-theory to homotopy type theory is not straightforward because the
+theory to homotopy type theory is not completely straightforward because the
 construction in higher toposes is restricted to the initial Grothendieck
-setting which is still very topologically oriented, and not very
+setting which is still very topologically oriented, and hence not very
 amenable to formalization in type theory. It seems more promising to
 use a synthetic notion of sheafification, called Lawvere-Tierney
 sheafification~\cite{tierney1972sheaf,maclanemoerdijk}, but this construction has not
 been considered yet in the setting of higher topos theory. This raises
 two issues that this paper addresses: (i) how to lift the notion of
-Lawvere-Tierney sheafification to higher topos theory and (ii) is it
+Lawvere-Tierney sheafification to higher topos theory and (ii) whether is it
 possible to formalize this new definition in homotopy type theory.
 
 
@@ -309,8 +307,8 @@ possible to formalize this new definition in homotopy type theory.
 % topos theory. 
 
 This paper presents a definition of the sheafification functor in the
-setting of homotopy type theory. As Lawvere-Tierney sheaves were, to
-our knowledge, not considered in the higher setting, the contribution
+setting of homotopy type theory. As Lawvere-Tierney sheaves have not, to
+our knowledge, been considered in the higher setting, the contribution
 of this article is twofold: (i) we propose a construction which
 coincides with Lawvere-Tierney sheafification when restricted to hSets
 by connecting it to the work on higher modalities~\cite{hottbook},
@@ -330,23 +328,23 @@ discusses its formalization inside the Coq proof assistant.
 
 \subsection*{Related Work}
 
-Similar questions have been considered around the Curry-Howard
-isomorphism, to extend a programming language close to type theory
-with new logical or computational principle while keeping consistency
-automatically.
+Similar questions have been considered in relation to the Curry-Howard
+isomorphism, that is, the possibility of extending a programming
+language close to type theory with new logical or computational
+principles while keeping consistency automatically.
 %
-For instance, much efforts have been done to provide a computational
-content to the law of excluded middle in order to define a
+For instance, much effort has been invested in providing a computational
+content for the law of excluded middle in order to define a
 constructive version of classical logic. This has lead to various
-calculi, with most notably the $\lambda \mu$-calculus of
-Parigot~\cite{parigot1993classical}, but this line of work has not
-appeared to be fruitful to define a new version of type theory with
+calculi, most notably the $\lambda \mu$-calculus of
+Parigot~\cite{parigot1993classical}. However, this line of work has not
+appeared to be fruitful in defining a new version of type theory with
 classical principles.
 %
-Other works have tried to extend continuation-passing-style (CPS)
-transformation to type theory, but they have been faced with the
+Other authors have tried to extend the continuation-passing-style (CPS)
+transformation to type theory.  They have been faced, however, with the
 difficulty that the CPS transformation is incompatible with (full) dependent
-sums~\cite{barthe2002cps}, which puts emphasis on the fragile link
+sums~\cite{barthe2002cps}, emphasizing the fragile link
 between the axiom of choice and the law of excluded middle in type theory.
 %
 Nevertheless the axiom of choice has been shown to be realizable by
@@ -358,12 +356,12 @@ restriction on elimination of dependent sums and lazy
 evaluation~\cite{herbelin2012constructive}.
 The work on forcing in type theory~\cite{jaber2012extending,forcing2016} also
 gives a computational meaning to a type theory enriched with new
-logical or computational principle.
+logical or computational principles.
 %
 Actually, this construction is entirely complementary to
 forcing in type theory, as forcing corresponds to the presheaf
 construction while Lawvere-Tierney sheafification corresponds to the
-topological transformation that allows to go from the presheaf
+topological transformation that allows the passage from the presheaf
 construction to the sheaf construction.
 
 
@@ -373,7 +371,7 @@ construction to the sheaf construction.
 \label{sec:hott}
 
 In this section, we review some basic definitions in homotopy type
-theory that are central in our formalization but not specific to
+theory which will be central to our formalization but not specific to
 sheafification. 
 % %
 % Section~\ref{ssec:hott} introduces the notion of homotopy types and
@@ -389,9 +387,9 @@ sheafification.
 % Giraud-Rezk-Lurie axioms on higher topoï that we need in the
 % definition of sheafification.
 % %
-The definitions of Section~\ref{ssec:hott} 
-are part, or direct applications of~\cite{hottbook}, while other definitions
-and theorems are specific to our formalization. 
+Some of the definitions and theorems of Section~\ref{ssec:hott} appear
+in ~\cite{hottbook} (or are direct applications of results which do)
+while others are specific to our formalization.
 
 As a prerequisite, we encourage the reader to be familiar with type theory and
 in particular the point of view developed
@@ -403,10 +401,10 @@ $\prod_{x:T} U x$ for the dependent product, $\sum_{x:T} U x$ for the dependent
 sum, and $\pi_1, \pi_2$ for the first and second projection of a
 dependent pair (denoted $(a;b)$). The identity path will be denoted
 $1$. We use informal mathematical language
-instead of type theory whenever it is possible, to ease the reading
+instead of type theory whenever it is possible, to ease in reading
 without making our statements imprecise. In particular, (higher)
 inductive types are defined using itemization to avoid an overhead of
-notation. In the rest of the paper, $\Type$ must be seen in an
+notation. Throughout the paper, $\Type$ must be seen in an
 universe-polymorphic way.
 
 Section~\ref{ssec:hott} will present homotopy levels and object
@@ -418,7 +416,7 @@ example in section~\ref{ssec:giraud-ax}.
  \subsection{Homotopy Types and Classifying Objects}
 \label{ssec:hott}
 
-One of the most direct application of homotopical notions to type
+One of the most direct applications of homotopical notions to type
 theory is the introduction of homotopy types. 
 %
 Using the analogy that points in a space correspond to elements of a
@@ -505,17 +503,17 @@ $
 \fib{f}{b} \defeq \sum_{a:A} f(a) = b.
 $
 %
-A function $f$ is with $n$-truncated homotopy fibers (or simply
-$n$-truncated function) when $\fib{f}{b}$
+A function $f$ has $n$-truncated homotopy fibers (or simply
+is an $n$-truncated function) when $\fib{f}{b}$
 is in $\Type_n$ for any $b$.  
 %
-Again, we define some sugar. A function $f$ is 
+Again, we define some syntactic sugar. A function $f$ is 
 \begin{itemize}
 \item an {\em embedding} if $f$ is $(-1)$-truncated
 \item a {\em surjection} if every fiber of $f$ is merely inhabited
   (i.e $\|\fib f y\|$ holds for all $y$).
 \end{itemize}
-Then one can show~\cite[Lemma 7.6.4]{hottbook} that any map $f$
+One can show~\cite[Lemma 7.6.4]{hottbook} that any map $f$
 factors uniquely through $\im(f) \defeq \sum_{y:B} \|\fib f y\|$ as a
 surjection followed by an embedding.
 
@@ -535,7 +533,7 @@ an equivalence
  classifier diagram (\cite[Theorem 4.8.4]{hottbook}) is a pullback.
 Therefore, in our construction, we will represent a subobject of a
 type $B$ with $n$-truncated homotopy fibers either as a map $f:A\to B$
-such that $\IsType n \fib{f}{b}$, either as a map $B\to \Type_n$.
+such that $\IsType n \fib{f}{b}$, or as a map $B\to \Type_n$.
 % \begin{mymath}
 % \xymatrix{
 %   A \ar[r]^{\hspace{-1em} t_f} \ar[d]_f & \Type_n^\bullet \ar[d]^{\pi_1}\\
@@ -584,9 +582,9 @@ such that $\IsType n \fib{f}{b}$, either as a map $B\to \Type_n$.
 \subsection{Colimits in Homotopy Type Theory }
 \label{ssec:colim-homot-type}
 
-One desired property we would like to consider concerns the colimits
-of \v{C}ech nerves (Section~\ref{ssec:giraud-ax}). This section presents
-a definition of colimits in a type theoretic setting.
+One desireable construction we would like to consider is the \v{C}ech
+nerve (Section~\ref{ssec:giraud-ax}). In order to do so, this section
+presents a definition of colimits in a type theoretic setting.
 % In the definition of (a special case of) Giraud-Rezk-Lurie axiom given in
 % Section~\ref{sec:giraud-ax}, the colimit of the {\em \v{C}ech nerve}
 % plays a central role.
@@ -655,7 +653,7 @@ following lemma.
     if $P$ satisfies the same property as in~\ref{def:colimit} when
     we replace $\Type$ by $\Type_m$} of $\|D\|_m$.
 \end{lem}
-The proof of this is really straightforward: a cocone over $D$ into
+The proof is quite straightforward: a cocone over $D$ into
 $P$ can be changed equivalently into a cocone over $\|D\|_m$ into $\|P\|_m$, using the
 elimination principle of truncations, and then
 we can show that the following diagram commutes for any $X:\Type_m$
@@ -692,7 +690,7 @@ axioms that characterize a topos. Namely, there are four axioms on a
 $(\infty,1)$-category that have been shown to be equivalent to
 $(\infty,1)$-topos axioms~\cite[Chapter 6]{lurie}.
 %
-The consequence we want to use here is the fact that a surjection
+A consequence which we would like to use here is the fact that a surjection
 (\ie{} $(-1)$-connected function) is the colimit of its \v{C}ech
 nerve.
 %
@@ -803,7 +801,7 @@ properties of modalities when they are not already present in the
 literature.
  %
 A truncated version of modalities, specific to our work, is then
-presented together with a discussion on the formalization.  
+presented together with a discussion of the formalization.  
 
 \begin{defi}
   \label{def:modality}
@@ -1173,7 +1171,7 @@ We suppose here that $\modal$ is a left-exact modality such that
 $\Type^\modal$ is modal.
 This is for example the case when the modality is {\em accessible}
 (see~\cite{hottlib} for definition and proof).
-We call {\em consistent} a modality $\modal$ such that $\modal\zero$
+We call a modality $\modal$ {\em consistent} if $\modal\zero$
 is empty.
 \begin{prop}
   The modal universe $\Type^\modal$ is non-trivial (non contractible) if the type $\modal
@@ -1255,14 +1253,14 @@ cannot be modal, as it is not even a $n$-truncated type.
 \subsection{Formalization}
 \label{ssec:mod-formalization}
 
-Let us discuss here about the formalization of the theory of
+Let us discuss here the formalization of the theory of
 modalities. General modalities are formalized in the Coq/HoTT
-library~\cite{hottlib}, thanks to a huge work of Mike
-Shulman~\cite{modules-modalities}. The formalization might seem to be
+library~\cite{hottlib}, thanks to the work of Mike
+Shulman~\cite{modules-modalities}. The formalization might seem
 straightforward, but the universe levels (at least, their automatic
-handling by Coq) are here a great issue. Hence, we have to explicitly
+handling by Coq) become a major issue. Hence, we have to explicitly
 give the universe levels and their constraints in a large part of the
-library. For example, the reflector $\modal$ of a modality is defined,
+library. For example, the reflector $\modal$ of a modality is defined
 in~\cite{hottlib} as
 \[ \modal : \Type^i \to \Type^i ;\]
 it maps any universe to itself.
@@ -1284,22 +1282,22 @@ Other components of the modality will have types
           }}}, & i,j \leqslant k
 \end{array}\]
 
-Fortunately, this change is small enough to preserve usual properties of
+Fortunately, this change is small enough as to preserve usual properties of
 modalities. Of course, the examples of modalities mapping
-any universe to itself are still an example of generalized modality,
-it just does not use the possibility to inhabit a higher
+any universe to itself are still examples of generalized modalities,
+simply ones which do not make use of the possibility of inhabiting a higher
 universe. 
 
 We would like to have the same generalization for truncated
-modalities. But there are a lot of new universe levels appearing,
-mostly because in $\Type_n = \sumD T \Type {\IsType n T}$, $\IsType n$
-come with its own universes. Hence, handling ``by hand'' so many
-universes together with their constraints quickly go out of
+modalities. However, in this case many new universe levels appear,
+mostly because in $\Type_n = \sumD T \Type {\IsType n T}$, and $\IsType n$
+each comes with its own universe. As a result, handling ``by hand'' so many
+universes together with their constraints quickly gets out of
 control. One idea to fix this issue could be to use {\em resizing
   rules}~\cite{vv-resizing}, allowing h-propositions to live in the
 smallest universe. We could then get rid of the universes generated by
-$\IsType n$, and treat the truncated modality exactly as generalized
-modalities.
+$\IsType n$, and treat the truncated modality exactly as any other generalized
+modality.
 
 In our formalization, we decided to work with the \code{type-in-type}
 Coq option, to avoid any issue with universes.
@@ -1308,12 +1306,13 @@ Coq option, to avoid any issue with universes.
 \section{Sheaves in toposes}
 \label{sec:sheaf_topos}
 
-In this section, we will rather work in an arbitrary topos rather than in type theory. The next section will present a
-generalization of the results presented here.
+In this section, we will work in an arbitrary topos rather than in
+type theory. The next section will present a generalization of the
+results presented here.
 
 Let us fix for the whole section a topos $\mathcal E$, with subobject
 classifier $\Omega$. A {\em Lawvere-Tierney topology} on $\mathcal E$
-is a way to modify slightly truth values of $\mathcal E$. It allows to
+is a way to modify slightly truth values of $\mathcal E$. It allows one to
 speak about {\em locally true} things instead of {\em true} things.
 
 \begin{defi}[\thethm\ (Lawvere-Tierney topology~\cite{maclanemoerdijk})]\label{defi:LT}
@@ -1324,7 +1323,8 @@ speak about {\em locally true} things instead of {\em true} things.
 
 A classical example of Lawvere-Tierney topology is given by double
 negation. Other examples are given by Grothendieck topologies, in the
-sense
+sense of the following:
+
 \begin{thm}[\thethm\ ({\cite[Theorem V.1.2]{maclanemoerdijk}})]
   Every Grothendieck topology $J$ on a small category $\mathbf C$ determines a
   Lawvere-Tierney topology $j$ on the presheaf topos
@@ -1343,10 +1343,10 @@ corresponds to the subobject of $E$ whose characteristic function is
 A subobject $A$ of $E$ is said to
 be dense when $\closure{A} = E$.
 
-Then, we are interested in objects of $\mathcal E$ for which it is
+Next, we are interested in objects of $\mathcal E$ for which it is
 impossible to make a distinction between objects and their dense
 subobjects, \ie{} for which ``true'' and ``locally true''
-coincide. Such objects are called {\em sheaves}, and are defined as
+coincide. Such objects are called {\em sheaves}, and are defined by
 
 \begin{defi}[\thethm\ (Sheaves{\cite[Section V.2]{maclanemoerdijk}})]
   On object $F$ of $\mathcal E$ is a sheaf (or $j$-sheaf) if for every
@@ -1366,7 +1366,7 @@ sheaves, is again a topos, with classifying object
 Lawvere-Tierney sheafification is a way to build a left adjoint $\mathbf{a}_j$ to the
 inclusion $\mathcal E \hookrightarrow \Sh{\mathcal E}$, exhibiting
 $\Sh{\mathcal E}$ as a reflective subcategory of $\mathcal E$. In
-particular, that implies that logical principles valid in $\mathcal E$
+particular, this implies that logical principles valid in $\mathcal E$
 are still valid in $\Sh{\mathcal E}$.
 
 For any object $E$ of $\mathcal E$, $\mathbf{a}_j(E)$ is defined as in
@@ -1391,59 +1391,59 @@ hypothesis. More precisely:
   which the continuum hypothesis fails.
 \end{thm}
 
-The proof actually follows almost exactly the famous proof of the
-construction by Paul Cohen of a model of ZFC negating the continuum
+The proof actually follows almost exactly the famous construction by
+Paul Cohen of a model of ZFC negating the continuum
 hypothesis~\cite{cohen1966}. Together with the model of constructible
-sets $\mathfrak L$ by Kurt Gödel~\cite{godel40}, it proves that CH is
-independent of ZFC, solving first Hilbert's problem.
+sets $\mathfrak L$ by Kurt Gödel~\cite{godel40}, this proves that CH is
+independent of ZFC, solving Hilbert's first problem.
 
 \section{Sheaves in homotopy type theory}
 \label{sec:sheaf_hott}
 
 The idea of this section is to consider sheafification in toposes as
-only the first step towards sheafification in type theory. 
-We remark that axioms for a Lawvere-Tierney topology on the subobject
-classifier $\Omega$ of a topos are very close to
-those of a modality on $\Omega$. We will extensively use this idea,
-applying it to every subobject classifier $\Type_n$ we described
-in section~\ref{sec:hott}. The subobject
-classifier $\Omega$ of a topos is seen as the {\em truth values} of the
-topos, which corresponds to the type $\HProp$ in our setting; the
-topos is considered proof irrelevant, corresponding to our
-$\HSet$. Sheafification in toposes is thus a way, when translated to the
-setting of homotopy type theory, to build, from a left-exact modality on
-$\HProp$, a left-exact modality on $\HSet$. Our hope in this section
-is to iterate this construction by applying it to the subobject
-classifier $\HSet$ equipped with a left-exact modality, to build a new
-left-exact modality on $\Type_1$, and so on. 
+only the first step towards sheafification in type theory.  We remark
+that axioms for a Lawvere-Tierney topology on the subobject classifier
+$\Omega$ of a topos are very close to those of a modality on
+$\Omega$. We will use this idea extensively, applying it to every
+subobject classifier $\Type_n$ as described in
+section~\ref{sec:hott}. The subobject classifier $\Omega$ of a topos
+is seen as the object of {\em truth values} of the topos, which
+corresponds to the type $\HProp$ in our setting; the topos itself is
+considered proof irrelevant, corresponding to our
+$\HSet$. Sheafification in toposes, when translated to
+the setting of homotopy type theory, is thus a way to build from a left-exact
+modality on $\HProp$, a left-exact modality on $\HSet$. Our hope in
+this section is to iterate this construction, extending a left-exact
+modality on $\HSet$ to one on $\Type_1$, and so on.
 
-The first thing we can note is that such a construction will not allow to reach every type:
-it is known that there exist types with no finite truncation
-level~\cite[Example 8.8.6]{hottbook}. Even worse, some types are not
-even the limit of its successive truncations, even in an hypercomplete
-setting~\cite{morelvv}. It suggests that defining a sheafification
-functor for all truncated types won't give (at least easily) a
-sheafification functor on whole $\Type$.
-Another issue that can be pointed is the complexity of proofs. If, in
-a topos-theoretic setting, everything is proof-irrelevant, it won't be
-the case for higher settings, forcing us to prove results that were
-previously true on the nose. This will oblige us to write long and
-technical proofs of coherence, and more deeply, to modify completely
-some lemmas, such as Proposition~\cite[Theorem IV.7.8]{maclanemoerdijk},
-stating that epimorphisms are coequalizers of their kernel pair.
+The first thing we can note is that such a construction will not allow
+to reach every type: it is known that there exist types with no finite
+truncation level~\cite[Example 8.8.6]{hottbook}. Worse, some
+types are not even the limit of their successive truncations, even in an
+hypercomplete setting~\cite{morelvv}. This suggests that defining a
+sheafification functor for all truncated types won't give (at least
+easily) a sheafification functor on the whole of $\Type$.  Another
+issue which must be pointed out is the complexity of proofs. Whereas
+in a topos-theoretic setting everything is proof-irrelevant, this is
+no longer the case in a higher setting, forcing us to reason about
+witnesses for results which were previously true on the nose. This
+will oblige us to write long and technical proofs of coherence, and
+occasionally to completely modify some lemmas, such as
+Proposition~\cite[Theorem IV.7.8]{maclanemoerdijk}, stating that
+epimorphisms are coequalizers of their kernel pairs.
 
 The main idea is thus to follow as closely as possible the
 topos-theoretic construction, and change it as few times as possible to
 make it work in our higher setting.
 
-Note that the principles we want to add are added directly from the
-$\HProp$ level, the extension to all truncated types is automatic. The
-choice of the left-exact modality on $\HProp$ is thus crucial. For the
-rest of the section, we fix one, denoted $\modal_{-1}$. The reader can
-think of the double negation $\modal_{\lnot\lnot}$ defined
-in~\ref{sssec:notnot}. We will define, by induction on the truncation
-level, left-exact modalities on all $\Type_n$, as in the following
-theorem.
+Note that, as the principles we want to add are inherited directly
+from the $\HProp$ level, the extension to all truncated types is
+automatic. The choice of the left-exact modality on $\HProp$ is thus
+crucial. For the rest of the section, we fix one, denoted
+$\modal_{-1}$. The reader can think of the double negation
+$\modal_{\lnot\lnot}$ defined in~\ref{sssec:notnot}. We will define,
+by induction on the truncation level, left-exact modalities on all
+$\Type_n$, as in the following theorem.
 
 \begin{thm}\label{thm:main}
   The sequence defined by induction by
@@ -1476,14 +1476,14 @@ result in the library in \code{\textsc{this special font}}.
 Let $n$ be a truncation index greater that $-1$, and $\modal_n$ be the
 left-exact modality given by our induction hypothesis. As in the
 topos-theoretic setting, we will define what it means for a type to be
-a $n$-sheaf (or just ``sheaf'' if the context is clear), and consider
+a $n$-sheaf (or just ``sheaf'', if the context is clear), and consider
 the reflective subuniverses of these sheaves; the reflector will
 exactly be the sheafification functor.
-The main issue to give the ``good'' definition is the choice of the
+The main issue in order to arrive at the ``right'' definition is the choice of the
 subobject classifier in which dense subobjects will be chosen: two
 choices appear, $\HProp$ and $\Type_n$; we will actually use
-both. What guided our choice is the crucial property that the type of
-all $n$-sheaves has to be a $(n+1)$-sheaf.
+both. This principle guiding our choice is that the type of
+all $n$-sheaves should be a $(n+1)$-sheaf.
 
 From the modality $\modal_n$, one can build a {\em closure operator}.
 
@@ -1522,8 +1522,8 @@ a certain function is an equivalence.
 \end{defi}
 
 Here, we need to distinguish between
-dense $(-1)$-subobjects, that will be used in the definition of
-sheaves, and dense $n$-subobjects, that will be used in the definition
+dense $(-1)$-subobjects, which will be used in the definition of
+sheaves, and dense $n$-subobjects, which will be used in the definition
 of separated types. 
 
 \begin{defi}[\thethm\ (Separated Type (\code{separated}))]
@@ -1532,7 +1532,7 @@ of separated types.
   $\Phi_E^\chi$ is an embedding.
 \end{defi}
 
-With topos theory point of view, it means that given a map $\sum_{e:E}
+From a point of view of topos theory, this means that given a map $\sum_{e:E}
 \chi\, e \to F$,
 if there is an extension $\tilde f:E\to F$, then it is unique, as in
  \[ \xymatrix{
@@ -1546,7 +1546,7 @@ if there is an extension $\tilde f:E\to F$, then it is unique, as in
   equivalence.
 \end{defi}
 
-In topos-theoretic words, it means that given a map $f : \sum_{e:E}
+In this case, this means that given a map $f : \sum_{e:E}
 \chi\, e\to F$, one can
 extend it uniquely to $\tilde f:E \to F$, as in 
  \[ \xymatrix{
@@ -1554,7 +1554,7 @@ extend it uniquely to $\tilde f:E \to F$, as in
     E \ar@{-->}[ru]_{\exists !}&
   }\]
 
-Note that these definitions are almost the same as the ones
+Note that these definitions are almost the same as those given in 
 in~\cite{maclanemoerdijk}. The main difference is that {separated}
 is defined for $n$-subobjects, while {sheaf} only for
 $(-1)$-subobjects. It might seem bizarre to make such a distinction,
@@ -1592,16 +1592,16 @@ but the following proposition gives a better understanding of the situation.
 A $(n+1)$-sheaf is hence just a type satisfying the usual property of sheaves
 (\ie{} existence of uniqueness of arrow extension from dense
 $(-1)$-subobjects), with the condition that all its path types are
-$n$-sheaves. It is a way to force the compatibility of the modalities we
+$n$-sheaves. This is a way to force the compatibility of the modalities we
 are defining.
 
 One can check that the property $\issep$ (resp. $\issheaf$) is $\HProp$:
 given a $X:\Type_{n+1}$, there is at most one way for it to be separated
-(resp. a sheaf). In particular, when needed to prove equality between
+(resp. a sheaf). In particular, when one needs to prove equality between
 two sheaves, it suffices to show the equality between the underlying
 types.
 
-As said earlier, these definitions allow us to prove the fundamental
+As mentioned earlier, these definitions allow us to prove the fundamental
 property that the type of all $n$-sheaves is itself a $(n+1)$-sheaf
 .
 
@@ -1611,7 +1611,7 @@ property that the type of all $n$-sheaves is itself a $(n+1)$-sheaf
 \end{prop}
 
 \begin{proof}
-  We have two things to prove here: separation, and sheafness.
+  We have two things to prove here: separation, and the sheaf property.
   \begin{itemize}
   \item Let $E:\Type$ and $\chi:E\to\Type$, dense in $E$. 
     Let $\phi_1,\phi_2:E \to
@@ -1649,7 +1649,7 @@ property that the type of all $n$-sheaves is itself a $(n+1)$-sheaf
   \end{lem}
   \begin{proof}
     This is just a modal counterpart of the property characterizing
-    fibers of composition of function.
+    the fibers of composition of functions.
   \end{proof}
   \end{itemize}
 \end{proof}
@@ -1686,10 +1686,10 @@ functions is a sheaf as soon as its codomain is a sheaf.
 \subsection{Sheafification}
 \label{ssec:sheafification}
 
-The sheafification process will be defined in two steps. The first
+The sheafification process will be defined in two steps. First
 one will build, from any $T:\Type_{n+1}$, a separated object $\separated
-T:\Type_{n+1}$; one can show that $\separated$ defines a modality on
-$\Type_{n+1}$. The second step will build, from any separated type
+T:\Type_{n+1}$; one can then show that $\separated$ defines a modality on
+$\Type_{n+1}$. Second, one builds, from any separated type
 $T:\Type_{n+1}$, a sheaf $\modal_{n+1}(T)$; one can show that
 $\modal_{n+1}$ is indeed the left-exact modality we are searching.
 
@@ -1750,7 +1750,7 @@ We use the following lemma:
   embedding, $\phi_1 \homot \phi_2$.
 \end{proof}
 As $\separated T$ embeds in $\left( \Type_n^\modal \right)^T$, we only
-have to show that the latter is separated. But it is the case because
+have to show that the latter is separated. But this is the case because
 $\Type_n^\modal$ is a sheaf (by Proposition~\ref{prop:sheaf-is-sheaf})
 and a function type is a sheaf as soon
 as its codomain is a sheaf (by Proposition~\ref{prop:sheaf-forall}).
@@ -1835,7 +1835,7 @@ We will need the following lemma:
   = x$, and the result follows. We refer to the formalization for details.
 \end{proof}
 
-This lemma allows to prove that, in the iterated kernel pair diagram
+This lemma allows one to prove that, in the iterated kernel pair diagram
 of $f$
 \[
   \xymatrix{
@@ -1876,7 +1876,7 @@ It is clear that if $A$ and $B$ are equivalent types, and for all $a,b:A,~f (a) 
      \ar[r] &\cdots
     }
   \]
-  The first equivalence is trivial. Let's then start with the
+  The first equivalence is trivial, so let us begin with the
   second. What we need to show is
   \[ \|\KP(\mu_T)\|_{n+1} \simeq \|\mathring T_T\|_{n+1}, \]
   \ie{}
@@ -1893,7 +1893,7 @@ It is clear that if $A$ and $B$ are equivalent types, and for all $a,b:A,~f (a) 
   
   By the previous remark, it suffices to show that $\mu_T$ satisfies condition~(\ref{eq:Omono}),
   \ie{} $\prodD {a,b} T {\modal_n (a=b) = (\mu_T a =
-  \mu_T b)}$. By univalence, we want arrows in both ways, forming an
+  \mu_T b)}$. By univalence, we want arrows in both directions, forming an
   equivalence.
   \begin{itemize}
   \item Suppose $p : (\mu_T a = \mu_T b)$. Then projecting $p$ along
@@ -1907,11 +1907,11 @@ It is clear that if $A$ and $B$ are equivalent types, and for all $a,b:A,~f (a) 
     (\mu_T b)$, \ie{} $\prodD t T{\modal_n (a=t) = \modal_n (b=t)}$. The latter
     remains true by univalence.
   \end{itemize}
-  The fact that these two form an equivalence is technical, we refer to
-  the formalization for an explicit proof.
+  As the fact that these two form an equivalence is rather technical,
+  we refer to the formalization for an explicit proof.
 
 
-  Let's show the other equivalences by induction. Suppose that, for a
+  Let us now show the other equivalences by induction. Suppose that, for a
   given $i:\N$, $\|\KP^i(\mu_T)\|_{n+1} \simeq \mathring T_i$. We want
   to prove $\|\KP^{i+1}(\mu_T)\|_{n+1} \simeq \mathring T_{i+1}$, \ie{}
 
@@ -1930,9 +1930,9 @@ It is clear that if $A$ and $B$ are equivalent types, and for all $a,b:A,~f (a) 
   \]
   where $f_{i}$ is the map $\KP^i(\mu_T) \to \separated T$. But
   lemma~\ref{lem:Omono} just asserted that $f_i$
-  satisfies~(\ref{eq:Omono}), hence the previous nota yields the result.
+  satisfies~(\ref{eq:Omono}), hence the previous yields the result.
   
-  One would need to show that, modulo these equivalences, the arrows
+  Next one would need to show that, modulo these equivalences, the arrows
   of the two diagrams are equal. We leave that to the reader, who can
   refer to the formalization if needed.
 \end{proof}
@@ -1988,16 +1988,16 @@ $\sumD y E {x = y}$ has a dense $n$-subobject, $\sumD y {\sumD e E {\chi\,
   \sumD y E {x = y} \ar@<2pt>[ur]^{\pi_2\circ f\circ \pi_1} \ar@<-2pt>[ur]_{\pi_2\circ g\circ \pi_1}&
 }\]%
 Using the separation property of $B\,x$, one can show that second
-components, transported correctly along the first components equality,
-are equal. The complete proof can be found in the formalization.
+components, correctly transported along the first component's equality,
+are themselves equal. The complete proof can be found in the formalization.
 This proves the following proposition
 \begin{prop}[\thethm\ (\code{separated\_modality})]
 \label{prop:sep-mod}
   $(\separated,\mu)$ defines a truncated modality on $\Type_{n+1}$.
 \end{prop}
 
-As this modality is just a step in the construction, we do not need to
-show that it is left exact, we will only do it for the sheafification
+As this modality forms just one step in our construction, we do not need to
+show that it is left exact.  This we will do only for the sheafification
 modality.
 
 \subsubsection{From Separated Type to Sheaf}
@@ -2034,7 +2034,7 @@ use the following lemma.
 
   Let $e:E$. As $\chi$ is dense, we have a term $w:\modal_n(\chi\,e)$,
   and by $\modal_n$-induction, a term $\widetilde w:\chi\, e$.
-  Then, by retraction property, $\psi(e) = \phi(e,\widetilde w)$, and by $\pi_2
+  Then, by the retraction property, $\psi(e) = \phi(e,\widetilde w)$, and by $\pi_2
   \circ \phi$, we have hence our term of type $\kappa(\psi\, e)$.
 
 
@@ -2063,12 +2063,12 @@ it forms a reflective subuniverse.
   into $\modal_{n+1} T$, so the sheaf property of $Q$ allows to extend
   $\separated f$ to $\modal_{n+1} f:\modal_{n+1} T \to Q$.
 
-  As all these steps are universal, the composition is.
+  As all these steps are universal, so is the composition.
 \end{proof}
 
 % Using the same technique as in proposition~\ref{prop:sep-mod}, we
 % have
-The next step is the closure under dependent sums, to state:
+The next step is the closure under dependent sums, specifically:
 \begin{prop}[\thethm\ (\code{sheafification\_modality})]
   $(\modal_{n+1},\nu)$ defines a modality.
 \end{prop}
@@ -2098,7 +2098,7 @@ The next step is the closure under dependent sums, to state:
 
 It remains to show that $\modal_{n+1}$ is left exact and is compatible
 with $\modal_{-1}$. To do that, we need to extend the notion of
-compatibility and show that actually every modality $\modal_{n+1}$ is
+compatibility and show that, in fact, every modality $\modal_{n+1}$ is
 compatible with $\modal_n$ on lower homotopy types.
 \begin{prop} \label{prop:compatibility}
   If $T:\Type_n$, then $\modal_{n+1} \widehat T = \modal_n T$, where $\widehat T$ is $T$ seen as a
@@ -2226,7 +2226,7 @@ $\Type$ by composing with truncation:
   of section~\ref{sec:modalities}
 \end{lem}
 \begin{proof}
-  It is straightforward to check every properties of a modality.
+  It is straightforward to check each property of a modality.
 \end{proof}
 If $\modal_{-1}$ is the double negation modality on $\HProp$ and
 $i=-1$, $\modal$ is exactly the double negation modality on $\Type$
@@ -2247,9 +2247,9 @@ restricted to $i$-truncated types, it is:
 \end{proof}
 
 The compatibility between the modalities $\modal_n$ and between the
-modalities $\|\cdot \|_n$ allow us to chose the truncation index as
+modalities $\|\cdot \|_n$ allows us to take the truncation index as
 high as desired.
-Taking it as a non-fixed parameter allows to work in an
+Taking it as a non-fixed parameter allows one to work in a
 universe where the new principle ({\em e.g.} mere excluded middle) is
 true for any explicit truncated type. Indeed, $i$ can be chosen
 dynamically along a proof, and thus be increased as much as needed,
@@ -2257,7 +2257,7 @@ without changing results for lower truncated types.
 
 % By proposition~\ref{prop:consistent}, these left-exact modalities
 % induces a consistent type theory.
-Furthermore, the univalence remains
+Furthermore, univalence remains
 true in this new type theory in the following sense:
 \begin{prop}\label{prop:univalence}
   Let $n$ be a given truncation index, and $\modal$ the modality
@@ -2327,7 +2327,7 @@ Section~\ref{ssec:sheafification} is formalized in
 
 Overall, % with other files containing technical lemmas,
 the project
-contains 8000 lines, and it could be reduced a bit by improving the
+contains 8000 lines. This, however, could be reduced a bit by improving the
 way Coq tries to rewrite and apply lemmas automatically. 
 The \texttt{coqwc} tool counts 1600 lines of specifications
 (definitions, lemmas, theorems, propositions) and 5500 lines of proof
@@ -2335,16 +2335,16 @@ script.
 %
 This constitutes a significant amount of work but the part dedicated
 to sheaves and sheafification is only 2200 lines of proof script,
-which seems quite reasonable and encouraging, because it suggests
-that homotopy type theory provides a convenient tool to formalize some
-part of the theory of higher topoï. 
+which seems quite reasonable and encouraging. Moreover it suggests
+that homotopy type theory provides a convenient tool in which to formalize some
+parts of the theory of higher toposes. 
 
 \subsection{Limitations of the formalization}
 \label{ssec:limit-form}
 
-In the formalization, we had to use the \texttt{type-in-type} option, to handle
+In the formalization, we we forced to use the \texttt{type-in-type} option to handle
 the universe issues we faced. However, a lot of the code compiles
-without this flag, but need universe polymorphism. 
+without this flag (but still needs universe polymorphism). 
 
 Universes are used in type theory to ensure consistency by checking
 that definitions are well-stratified according to a certain hierarchy.
@@ -2357,17 +2357,17 @@ formalization, its implementation is still too rigid to allow a
 complete formalization of our work for the following reasons.
 
 %
-If Coq handles cumulativity on $\Type$ natively, it is not
+While Coq handles cumulativity on $\Type$ natively, this is not
 the case for the $\Sigma$-type $\Type_n$, which requires propositional
 resizing. 
 %
 This issue could be solved by adding an axiom of cumulativity
 for $\Type_n$ with an explicit management of universes. 
 %
-But as it would not have any computational content, such a solution
-would really complicate the proofs as the axiom would appear
-everywhere cumulativity is needed and it would need explicit
-annotations for universe levels everywhere in the formalization.
+However, as it would not have any computational content, such a solution
+would needlessly complicate the proofs. Indeed, the axiom would then appear
+everywhere cumulativity is needed and one would need explicit
+annotations for universe levels throughout the formalization.
 %
 % Note that we also could have resolved the issue by giving explicitely
 % the universe levels we wanted, like in the Coq/HoTT library\cite{hottlib}.
@@ -2407,34 +2407,34 @@ Thus, the induction step presented in this paper has been formalized,
 but the complete recursive sheafification can not be defined for the
 moment.
 %
-Note that the same increasing in the universe levels occurs in the
-Rezk completion for categories~\cite{rezk}. In the definition of the
-completion, they use the Yoneda embedding and representable functors,
-which is similar to our use of characteristic functions.
+Note that the same increase in the universe levels occurs in the
+Rezk completion of categories~\cite{rezk}. In the definition of the
+completion, one uses the Yoneda embedding and representable functors,
+which is similar in spirit to our use of characteristic functions.
  
 %
 This restriction in our formalization may be solved by
-generalizing the management of universe polymorphism for recursive definition
+generalizing the management of universe polymorphism for recursive definitions
 %
-or by the use of general ``resizing axiom'' which is still under
+or by the use of more general ``resizing axioms'' which are still under
 discussion in the community.
  
 
 \section{Conclusion and Future Works}
 \label{sec:future-works}
 
-In this paper, we have defined a way to leverage Lawvere-Tierney
+In this paper, we have demonstrated a way to extend Lawvere-Tierney
 sheafification to truncated types in homotopy type theory. 
 
 %
-Beyond this result, our work is part of a more general line of work
-which aims to illustrate that homotopy type theory is a very promising
-theory for formalizing mathematics inside a proof assistant.
+Above and beyond this individual result, our work is part of a larger program
+which aims to illustrate that homotopy type theory is a promising
+candidate for the formalization of mathematics inside a proof assistant.
 
 % \nt{Add something on the definition of a syntactic translation as it
   % has been done for forcing.}
 
-As future works, we would like to improve this construction in three
+In future work, we would like to improve this construction in three
 ways.
 % \begin{itemize}
 % \item 
@@ -2472,8 +2472,8 @@ remains true in higher topos theory.
 Moreover, we highly suspect that modalities (at least, left-exact
 accessible modalities) induces new type theories, as Grothendieck
 sheaves exhibits some $(\infty,1)$-subtoposes. It would be nice to
-give a better sense to sub-type theories, and to instantiate it with
-sheafification, to exhibit a model of homotopy type theory, with
+give a better sense to sub-type theories and to instantiate them with
+sheafification, giving, for example, a model of homotopy type theory with
 computational mere excluded middle.
 
 % \section*{Acknowledgments}
@@ -3257,3 +3257,8 @@ This work has been funded by the CoqHoTT ERC Grant 637339.
 
 
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "sheaf_jfr"
+%%% End:
