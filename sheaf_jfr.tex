@@ -156,7 +156,7 @@
   % 
   The same construction has not been developed in Martin-Löf type
   theory because of a mismatch between topos theory and type theory. This
-  mismatched has been fixed recently by considering homotopy type
+  mismatch has been fixed recently by considering homotopy type
   theory, an extension of Martin-Löf type theory with new
   principles inspired by category theory and homotopy theory, and
   which corresponds closely to higher toposes.
@@ -238,7 +238,7 @@ construction of the geometric embedding is done in \cite[Section
 V.3]{maclanemoerdijk}, and briefly recalled in
 section~\ref{sec:sheaf_topos}.
 
-Type theory is known to be quite closed to topos theory so one could
+Type theory is known to be quite close to topos theory so one could
 wonder why similar techniques have not been developed in the field of
 type theory.
 %
@@ -272,7 +272,7 @@ starts when considering higher homotopy types.
 %
 Fortunately, a higher version of topos theory has been developed
 recently, synthesized in the monograph of Lurie on
-higher topos theory~\cite{lurie}. Even if the connection between the
+higher topos theory~\cite{lurie}. Even if the connection between 
 homotopy type theory and higher topos theory has not been made precise
 yet, it is commonly believed that the former constitutes an internal
 language for the latter (see \cite{shulman2015} for a more detail
@@ -294,7 +294,7 @@ setting which is still very topologically oriented, and not very
 amenable to formalization in type theory. It seems more promising to
 use a synthetic notion of sheafification, called Lawvere-Tierney
 sheafification~\cite{tierney1972sheaf,maclanemoerdijk}, but this construction has not
-been considered yet in the setting of higher topos theory. This rises
+been considered yet in the setting of higher topos theory. This raises
 two issues that this paper addresses: (i) how to lift the notion of
 Lawvere-Tierney sheafification to higher topos theory and (ii) is it
 possible to formalize this new definition in homotopy type theory.
@@ -398,10 +398,10 @@ in particular the point of view developed
 in~\cite{hottbook}. Nevertheless, we recall most of the central definitions 
 that we use so that the paper is sufficiently self-contained.
 %
-Given a type $T$ and a type family $U : T \to \Type$, we note
+Given a type $T$ and a type family $U : T \to \Type$, we denote
 $\prod_{x:T} U x$ for the dependent product, $\sum_{x:T} U x$ for the dependent
 sum, and $\pi_1, \pi_2$ for the first and second projection of a
-dependent pair (noted $(a;b)$). The identity path will be denoted
+dependent pair (denoted $(a;b)$). The identity path will be denoted
 $1$. We use informal mathematical language
 instead of type theory whenever it is possible, to ease the reading
 without making our statements imprecise. In particular, (higher)
@@ -893,7 +893,7 @@ that
 \begin{prop}\label{prop:mod_prop}
   Any left-exact modality $\modal$ satisfies the following
   properties\footnote{Properties needing only a reflective subuniverse
-    are annoted by (R), a modality by (M), a left-exact modality by (L)}.
+    are annotated by (R), a modality by (M), a left-exact modality by (L)}.
   \begin{itemize}
   \item[\labelitemi(R)] $A$ is modal if and only if $\eta_A$ is an equivalence.
   \item[\labelitemi(R)] $\one$ is modal.
@@ -1402,7 +1402,7 @@ independent of ZFC, solving first Hilbert's problem.
 
 The idea of this section is to consider sheafification in toposes as
 only the first step towards sheafification in type theory. 
-We note that axioms for a Lawvere-Tierney topology on the subobject
+We remark that axioms for a Lawvere-Tierney topology on the subobject
 classifier $\Omega$ of a topos are very close to
 those of a modality on $\Omega$. We will extensively use this idea,
 applying it to every subobject classifier $\Type_n$ we described
@@ -1417,8 +1417,7 @@ is to iterate this construction by applying it to the subobject
 classifier $\HSet$ equipped with a left-exact modality, to build a new
 left-exact modality on $\Type_1$, and so on. 
 
-The first thing we can
-note is that such a construction will not allow to reach every type:
+The first thing we can note is that such a construction will not allow to reach every type:
 it is known that there exist types with no finite truncation
 level~\cite[Example 8.8.6]{hottbook}. Even worse, some types are not
 even the limit of its successive truncations, even in an hypercomplete
@@ -1440,7 +1439,7 @@ make it work in our higher setting.
 Note that the principles we want to add are added directly from the
 $\HProp$ level, the extension to all truncated types is automatic. The
 choice of the left-exact modality on $\HProp$ is thus crucial. For the
-rest of the section, we fix one, noted $\modal_{-1}$. The reader can
+rest of the section, we fix one, denoted $\modal_{-1}$. The reader can
 think of the double negation $\modal_{\lnot\lnot}$ defined
 in~\ref{sssec:notnot}. We will define, by induction on the truncation
 level, left-exact modalities on all $\Type_n$, as in the following
